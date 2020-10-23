@@ -1,4 +1,4 @@
-import { storedAgents, surveyData } from '../data';
+
 import { DateService } from '../services/dates.service';
 import { AfterViewInit, Component, Input, OnInit, ViewChild } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
@@ -19,16 +19,40 @@ export interface SummaryElement {
 })
 export class SummaryTableComponent implements OnInit, AfterViewInit {
 
+  //Initial Variables
   startingDate: Date = new Date(this.dateService.startingDateSource.getValue());
 
   endingDate: Date = new Date(this.dateService.endingDateSource.getValue());
-  agentList = storedAgents.map(a => a.agent);
 
-  dateRangeData = this.dateService.dateRangeDataSource.value;
+  dateRangeData = this.dateService.dateRangeDataSource.getValue();
 
+
+
+  //Managing the Table Output
+
+  agentList = this.getAgentList();
   displayedColumns: string[] = ['agent', 'google', 'yelp', 'facebook', 'total'];
-
   dataSource = new MatTableDataSource(this.summarizeData());
+  totalElement = this.getTotalElement();
+
+  getAgentList() {
+    console.log('dateRangeData', this.dateRangeData);
+    let outputArray = [];
+
+    let agentArray = this.dateRangeData.map(entry => entry.agent);
+    console.log('agentArray', agentArray);
+
+    for (let agent of agentArray)
+      if (!outputArray.includes(agent))
+        outputArray.push(agent);
+    return outputArray;
+
+
+  }
+
+  findUnique(input: Array<any>) {
+
+  }
 
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
@@ -39,7 +63,6 @@ export class SummaryTableComponent implements OnInit, AfterViewInit {
   summarizeData() {
     let output = this.createSummaryArray();
     let totalElement = this.getTotalElement();
-    output.push(totalElement);
     return output;
   }
 
@@ -111,11 +134,12 @@ export class SummaryTableComponent implements OnInit, AfterViewInit {
 
     this.refresh();
 
-    console.log('date range data:', this.dateRangeData);
+    console.log('agent list:', this.agentList);
 
   }
 
   refresh() {
+    this.agentList = this.getAgentList();
     this.dataSource = new MatTableDataSource(this.summarizeData());
     this.dataSource.sort = this.sort;
   }

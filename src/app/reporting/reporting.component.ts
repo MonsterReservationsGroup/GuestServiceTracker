@@ -1,4 +1,4 @@
-import { storedAgents, surveyData } from '../data';
+
 import { NgModel } from '@angular/forms';
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';

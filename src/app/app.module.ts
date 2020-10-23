@@ -14,12 +14,10 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatSelectModule } from '@angular/material/select';
 import { MatInputModule } from '@angular/material/input';
 
-import { DataEntryComponent } from './data-entry/data-entry.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { DisplayComponent } from './display/display.component';
 import { ReportingComponent } from './reporting/reporting.component';
 import { RouterModule } from '@angular/router';
-import { HomeComponent } from './home/home.component';
 import { FormsModule } from '@angular/forms';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
@@ -34,11 +32,10 @@ import { RawDataTableComponent } from './raw-data-table/raw-data-table.component
 @NgModule({
   declarations: [
     AppComponent,
-    DataEntryComponent,
     NavbarComponent,
     DisplayComponent,
     ReportingComponent,
-    HomeComponent,
+
     SummaryTableComponent,
     RawDataTableComponent
   ],
@@ -61,14 +58,6 @@ import { RawDataTableComponent } from './raw-data-table/raw-data-table.component
 
     RouterModule.forRoot([
       {
-        path: '',
-        component: HomeComponent
-      },
-      {
-        path: 'entry',
-        component: DataEntryComponent
-      },
-      {
         path: 'reporting/:passedDate',
         component: ReportingComponent
       },
@@ -77,20 +66,13 @@ import { RawDataTableComponent } from './raw-data-table/raw-data-table.component
         component: ReportingComponent
       },
       {
-        path: 'display/:guestName/:agent',
-        component: DisplayComponent
-      },
-      {
         path: 'display',
         component: DisplayComponent
       },
-      {
-        path: 'home',
-        component: HomeComponent
-      },
+
       {
         path: '**',
-        component: HomeComponent
+        component: NavbarComponent
       }
     ])
   ],
