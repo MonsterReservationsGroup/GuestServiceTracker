@@ -69,6 +69,10 @@ import { RawDataTableComponent } from './raw-data-table/raw-data-table.component
         component: DataEntryComponent
       },
       {
+        path: 'reporting/:passedDate',
+        component: ReportingComponent
+      },
+      {
         path: 'reporting',
         component: ReportingComponent
       },

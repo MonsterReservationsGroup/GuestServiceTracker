@@ -97,14 +97,16 @@ export class DateService {
 
   dateRangeDataSource = new BehaviorSubject(this.importedData
     .filter(entry => new Date(entry.date) >= new Date(this.startingDateSource.getValue()))
-    .filter(entry => new Date(entry.date) <= new Date(this.endingDateSource.getValue())));
+    .filter(entry => new Date(entry.date) <= new Date(this.endingDateSource.getValue()))
+    .sort((a, b) => (a.date > b.date) ? 1 : ((b.date > a.date) ? -1 : 0)));
 
   currentDateRangeData = this.dateRangeDataSource.asObservable();
 
   updateDateRange() {
     return this.importedData
       .filter(entry => new Date(entry.date) >= new Date(this.startingDateSource.getValue()))
-      .filter(entry => new Date(entry.date) <= new Date(this.endingDateSource.getValue()));
+      .filter(entry => new Date(entry.date) <= new Date(this.endingDateSource.getValue()))
+      .sort((a, b) => (a.date > b.date) ? 1 : ((b.date > a.date) ? -1 : 0));
   }
 
 

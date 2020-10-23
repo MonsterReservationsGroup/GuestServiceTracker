@@ -1,4 +1,16 @@
 <div>
+    <span class="filter-label">
+        <label>Agent Summary </label>
+    </span>
+    <mat-form-field id="test">
+        <mat-label>Filter</mat-label>
+        <input matInput
+            (keyup)="applyFilter($event)"
+            placeholder="Ex. ium"
+            #input
+            class="filter">
+    </mat-form-field>
+
     <table mat-table
         matSort
         [dataSource]="dataSource"

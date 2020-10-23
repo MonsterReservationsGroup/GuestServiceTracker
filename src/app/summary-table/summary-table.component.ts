@@ -30,6 +30,11 @@ export class SummaryTableComponent implements OnInit, AfterViewInit {
 
   dataSource = new MatTableDataSource(this.summarizeData());
 
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
+
   //Summarize Data functions below--------------------------------------------------------------------------
   summarizeData() {
     let output = this.createSummaryArray();
@@ -112,13 +117,13 @@ export class SummaryTableComponent implements OnInit, AfterViewInit {
 
   refresh() {
     this.dataSource = new MatTableDataSource(this.summarizeData());
+    this.dataSource.sort = this.sort;
   }
 
   @ViewChild(MatSort) sort: MatSort;
 
   ngAfterViewInit() {
     this.refresh();
-    this.dataSource.sort = this.sort;
   }
 
 }
