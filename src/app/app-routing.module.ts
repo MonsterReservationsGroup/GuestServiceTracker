@@ -1,10 +1,26 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { DisplayComponent } from './display/display.component';
+import { NavbarComponent } from './navbar/navbar.component';
+import { ReportingComponent } from './reporting/reporting.component';
 
-const routes: Routes = [];
+const routes: Routes = [
+	{
+		path: 'reporting/:passedDate',
+		component: ReportingComponent,
+	},
+	{
+		path: 'reporting',
+		component: ReportingComponent,
+	},
+	{
+		path: 'display',
+		component: DisplayComponent,
+	},
+];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+	imports: [RouterModule.forRoot(routes)],
+	exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

@@ -1,8 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
-
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -26,62 +24,50 @@ import { MatSortModule } from '@angular/material/sort';
 import { SummaryTableComponent } from './summary-table/summary-table.component';
 import { DateService } from './services/dates.service';
 import { RawDataTableComponent } from './raw-data-table/raw-data-table.component';
-
-
+import { AngularFireModule } from '@angular/fire';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    NavbarComponent,
-    DisplayComponent,
-    ReportingComponent,
+	declarations: [
+		AppComponent,
+		NavbarComponent,
+		DisplayComponent,
+		ReportingComponent,
 
-    SummaryTableComponent,
-    RawDataTableComponent
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    BrowserAnimationsModule,
-    MatSliderModule,
-    MatButtonToggleModule,
-    MatButtonModule,
-    MatToolbarModule,
-    MatIconModule,
-    MatSelectModule,
-    MatInputModule,
-    FormsModule,
-    MatDatepickerModule,
-    MatNativeDateModule,
-    MatTableModule,
-    MatSortModule,
+		SummaryTableComponent,
+		RawDataTableComponent,
+	],
+	imports: [
+		BrowserModule,
+		AppRoutingModule,
+		BrowserAnimationsModule,
+		MatSliderModule,
+		MatButtonToggleModule,
+		MatButtonModule,
+		MatToolbarModule,
+		MatIconModule,
+		MatSelectModule,
+		MatInputModule,
+		FormsModule,
+		MatDatepickerModule,
+		MatNativeDateModule,
+		MatTableModule,
+		MatSortModule,
+		AngularFireModule.initializeApp({
+			apiKey: 'AIzaSyChhQRVh-fwiMQQekIEj6D0oWbj4_8618w',
+			authDomain: 'guestservicestracker.firebaseapp.com',
+			databaseURL: 'https://guestservicestracker.firebaseio.com',
+			projectId: 'guestservicestracker',
+			storageBucket: 'guestservicestracker.appspot.com',
+			messagingSenderId: '237171382398',
+			appId: '1:237171382398:web:328a7a06bcd49bd354202f',
+			measurementId: 'G-4QL2Q82D0R',
+		}),
+		AngularFirestoreModule,
+	],
 
-    RouterModule.forRoot([
-      {
-        path: 'reporting/:passedDate',
-        component: ReportingComponent
-      },
-      {
-        path: 'reporting',
-        component: ReportingComponent
-      },
-      {
-        path: 'display',
-        component: DisplayComponent
-      },
+	providers: [MatDatepickerModule, DateService],
 
-      {
-        path: '**',
-        component: NavbarComponent
-      }
-    ])
-  ],
-
-  providers: [
-    MatDatepickerModule,
-    DateService
-  ],
-
-  bootstrap: [AppComponent]
+	bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
