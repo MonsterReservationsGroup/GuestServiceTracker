@@ -11,10 +11,10 @@ import { MatSort } from '@angular/material/sort';
 })
 export class RawDataTableComponent implements OnInit {
 
-  importedData: Array<SourceData> = this.dateService.dateRangeDataSource
-    .getValue().sort((a, b) => (a.date > b.date) ? 1 : ((b.date > a.date) ? -1 : 0));
 
-  //table management stuff below-----------
+
+  //table management stuff below---------------------------------------------------
+  importedData: Array<SourceData> = this.dateService.dateRangeDataSource.getValue();
   displayedColumns: string[] = ['date', 'resID', 'agent', 'source'];
   dataSource = new MatTableDataSource(this.importedData);
 
@@ -23,7 +23,9 @@ export class RawDataTableComponent implements OnInit {
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
-  //OnInit stuff below-------------
+  @ViewChild(MatSort) sort: MatSort;
+
+  //OnInit stuff below--------------------------------------------------------------
   constructor(private dateService: DateService) { }
 
   ngOnInit(): void {
@@ -33,14 +35,11 @@ export class RawDataTableComponent implements OnInit {
     })
   }
 
-  @ViewChild(MatSort) sort: MatSort;
-
-  ngAfterViewInit() {
-    this.refresh();
-  }
-
-  refresh() {
+  refresh(): void {
     this.dataSource = new MatTableDataSource(this.importedData);
     this.dataSource.sort = this.sort;
   }
+
+
+
 }

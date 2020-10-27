@@ -1,5 +1,6 @@
 
 import { DateService } from '../services/dates.service';
+import { surveyData, SurveySent, sentSurveys } from '../data';
 import { AfterViewInit, Component, Input, OnInit, ViewChild } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatSort } from '@angular/material/sort';
@@ -9,7 +10,8 @@ export interface SummaryElement {
   google: number,
   yelp: number,
   facebook: number,
-  total: number
+  total: number,
+  sent: number
 }
 
 @Component({
@@ -19,24 +21,21 @@ export interface SummaryElement {
 })
 export class SummaryTableComponent implements OnInit, AfterViewInit {
 
-  //Initial Variables
-  startingDate: Date = new Date(this.dateService.startingDateSource.getValue());
 
-  endingDate: Date = new Date(this.dateService.endingDateSource.getValue());
 
+  //Managing the Table Output---------------------------------------------------------------------------
   dateRangeData = this.dateService.dateRangeDataSource.getValue();
-
-
-
-  //Managing the Table Output
+  sentSurveys = this.dateService.updateSentSurveys();
 
   agentList = this.getAgentList();
-  displayedColumns: string[] = ['agent', 'google', 'yelp', 'facebook', 'total'];
+
+
+  displayedColumns: string[] = ['agent', 'google', 'yelp', 'facebook', 'total', 'sent'];
   dataSource = new MatTableDataSource(this.summarizeData());
   totalElement = this.getTotalElement();
 
-  getAgentList() {
-    console.log('dateRangeData', this.dateRangeData);
+  getAgentList(): Array<any> {
+    console.log('date range data:', this.dateRangeData);
     let outputArray = [];
 
     let agentArray = this.dateRangeData.map(entry => entry.agent);
@@ -50,23 +49,21 @@ export class SummaryTableComponent implements OnInit, AfterViewInit {
 
   }
 
-  findUnique(input: Array<any>) {
 
-  }
 
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
+
   //Summarize Data functions below--------------------------------------------------------------------------
-  summarizeData() {
-    let output = this.createSummaryArray();
-    let totalElement = this.getTotalElement();
-    return output;
+  summarizeData(): Array<any> {
+    this.totalElement = this.getTotalElement();
+    return this.createSummaryArray();
   }
 
-  createSummaryArray() {
+  createSummaryArray(): Array<any> {
     let output = [];
     for (let agent of this.agentList) {
       let newElement: SummaryElement = {
@@ -75,6 +72,9 @@ export class SummaryTableComponent implements OnInit, AfterViewInit {
         yelp: this.getSourceCount(agent, 'Yelp'),
         facebook: this.getSourceCount(agent, 'Facebook'),
         total: this.dateRangeData
+          .filter(entry => entry.agent === agent)
+          .length,
+        sent: this.sentSurveys
           .filter(entry => entry.agent === agent)
           .length
       }
@@ -97,7 +97,8 @@ export class SummaryTableComponent implements OnInit, AfterViewInit {
       google: this.getTotalCount('Google'),
       yelp: this.getTotalCount('Yelp'),
       facebook: this.getTotalCount('Facebook'),
-      total: (this.dateRangeData as Array<any>).length
+      total: (this.dateRangeData as Array<any>).length,
+      sent: this.sentSurveys.length
     }
     return totalElement;
   }
@@ -114,21 +115,15 @@ export class SummaryTableComponent implements OnInit, AfterViewInit {
   constructor(private dateService: DateService) { }
 
   ngOnInit(): void {
-    this.dateService.currentStartDate
-      .subscribe(startDate => {
-        this.startingDate = startDate;
-        this.refresh();
-      });
-
-    this.dateService.currentEndDate
-      .subscribe(endDate => {
-        this.endingDate = endDate;
-        this.refresh();
-      });
-
     this.dateService.currentDateRangeData
       .subscribe(dateRange => {
         this.dateRangeData = dateRange;
+        this.refresh();
+      })
+
+    this.dateService.currentSentSurveys
+      .subscribe(surveys => {
+        this.sentSurveys = surveys;
         this.refresh();
       })
 
@@ -142,6 +137,9 @@ export class SummaryTableComponent implements OnInit, AfterViewInit {
     this.agentList = this.getAgentList();
     this.dataSource = new MatTableDataSource(this.summarizeData());
     this.dataSource.sort = this.sort;
+    this.sentSurveys = this.dateService.updateSentSurveys();
+
+
   }
 
   @ViewChild(MatSort) sort: MatSort;

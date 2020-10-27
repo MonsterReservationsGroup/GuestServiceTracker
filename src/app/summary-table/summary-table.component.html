@@ -101,6 +101,23 @@
             </td>
         </ng-container>
 
+        <!-- Sent Column -->
+        <ng-container matColumnDef="sent">
+            <th mat-header-cell
+                *matHeaderCellDef
+                mat-sort-header
+                class="sent"> Surveys Sent </th>
+            <td mat-cell
+                *matCellDef="let element">
+                {{element.sent}}
+            </td>
+            <td mat-footer-cell
+                *matFooterCellDef
+                class="total">
+                {{totalElement.sent}}
+            </td>
+        </ng-container>
+
         <tr mat-header-row
             *matHeaderRowDef="displayedColumns"></tr>
         <tr mat-row

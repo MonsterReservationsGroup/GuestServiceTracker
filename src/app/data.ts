@@ -1,21 +1,9 @@
-
-
-export interface DataEntry {
+export interface SurveySent {
+    date: string,
     agent: string,
-    guest: string,
-    feedback: string,
-    survey: string
+    resID: string
 }
 
-export interface Agents {
-    value: number,
-    agent: string
-}
-
-export interface Rating {
-    rating: number,
-    description: string
-}
 
 export interface SourceData {
     date: string,
@@ -24,6 +12,8 @@ export interface SourceData {
     resID: number,
 
 }
+
+
 
 
 export const surveyData: Array<SourceData> = [
@@ -1829,3 +1819,1005 @@ export const surveyData: Array<SourceData> = [
     }
 
 ];
+export const sentSurveys: Array<SurveySent> = [
+    {
+        "date": "2020-10-19T01:11:11.396Z",
+        "agent": "Ryon",
+        "resID": "118736"
+    },
+    {
+        "date": "2020-10-12T10:13:19.938Z",
+        "agent": "Ryon",
+        "resID": "93188"
+    },
+    {
+        "date": "2020-10-21T19:32:41.471Z",
+        "agent": "Amber",
+        "resID": "69022"
+    },
+    {
+        "date": "2020-10-17T12:16:45.553Z",
+        "agent": "Lauren",
+        "resID": "52913"
+    },
+    {
+        "date": "2020-10-12T07:48:39.462Z",
+        "agent": "Ryon",
+        "resID": "84560"
+    },
+    {
+        "date": "2020-10-15T11:29:49.171Z",
+        "agent": "Ryon",
+        "resID": "10430"
+    },
+    {
+        "date": "2020-10-16T09:14:14.800Z",
+        "agent": "Lauren",
+        "resID": "79182"
+    },
+    {
+        "date": "2020-10-14T20:58:25.408Z",
+        "agent": "Kelly",
+        "resID": "145235"
+    },
+    {
+        "date": "2020-10-12T06:55:32.311Z",
+        "agent": "Kelly",
+        "resID": "7940"
+    },
+    {
+        "date": "2020-10-15T17:59:27.969Z",
+        "agent": "Lauren",
+        "resID": "34974"
+    },
+    {
+        "date": "2020-10-18T18:21:42.187Z",
+        "agent": "Ryon",
+        "resID": "828"
+    },
+    {
+        "date": "2020-10-17T15:42:09.220Z",
+        "agent": "Lauren",
+        "resID": "133599"
+    },
+    {
+        "date": "2020-10-12T06:27:37.441Z",
+        "agent": "Kelly",
+        "resID": "106894"
+    },
+    {
+        "date": "2020-10-25T04:07:45.272Z",
+        "agent": "Amber",
+        "resID": "78982"
+    },
+    {
+        "date": "2020-10-18T20:28:19.486Z",
+        "agent": "Kelly",
+        "resID": "34855"
+    },
+    {
+        "date": "2020-10-25T08:49:42.666Z",
+        "agent": "Amber",
+        "resID": "75848"
+    },
+    {
+        "date": "2020-10-16T09:15:22.049Z",
+        "agent": "Ryon",
+        "resID": "122499"
+    },
+    {
+        "date": "2020-10-23T15:58:48.700Z",
+        "agent": "Ryon",
+        "resID": "69562"
+    },
+    {
+        "date": "2020-10-22T02:45:06.766Z",
+        "agent": "Amber",
+        "resID": "102047"
+    },
+    {
+        "date": "2020-10-15T22:55:32.296Z",
+        "agent": "Lauren",
+        "resID": "74816"
+    },
+    {
+        "date": "2020-10-21T14:31:42.919Z",
+        "agent": "Lauren",
+        "resID": "50820"
+    },
+    {
+        "date": "2020-10-26T02:24:06.130Z",
+        "agent": "Amber",
+        "resID": "77098"
+    },
+    {
+        "date": "2020-10-12T08:56:02.027Z",
+        "agent": "Lauren",
+        "resID": "131101"
+    },
+    {
+        "date": "2020-10-12T18:16:22.605Z",
+        "agent": "Lauren",
+        "resID": "95128"
+    },
+    {
+        "date": "2020-10-15T02:04:30.403Z",
+        "agent": "Lauren",
+        "resID": "149475"
+    },
+    {
+        "date": "2020-10-25T20:06:01.524Z",
+        "agent": "Ryon",
+        "resID": "16415"
+    },
+    {
+        "date": "2020-10-21T02:15:21.411Z",
+        "agent": "Ryon",
+        "resID": "50902"
+    },
+    {
+        "date": "2020-10-17T00:25:19.944Z",
+        "agent": "Amber",
+        "resID": "137797"
+    },
+    {
+        "date": "2020-10-24T13:59:17.921Z",
+        "agent": "Matt",
+        "resID": "122866"
+    },
+    {
+        "date": "2020-10-20T19:17:41.934Z",
+        "agent": "Matt",
+        "resID": "69318"
+    },
+    {
+        "date": "2020-10-14T10:48:26.311Z",
+        "agent": "Lauren",
+        "resID": "96354"
+    },
+    {
+        "date": "2020-10-14T12:04:22.251Z",
+        "agent": "Kelly",
+        "resID": "91369"
+    },
+    {
+        "date": "2020-10-13T11:15:49.345Z",
+        "agent": "Matt",
+        "resID": "100654"
+    },
+    {
+        "date": "2020-10-18T21:00:46.956Z",
+        "agent": "Matt",
+        "resID": "85711"
+    },
+    {
+        "date": "2020-10-15T08:35:49.720Z",
+        "agent": "Lauren",
+        "resID": "58771"
+    },
+    {
+        "date": "2020-10-21T19:50:13.303Z",
+        "agent": "Ryon",
+        "resID": "60856"
+    },
+    {
+        "date": "2020-10-19T17:17:11.720Z",
+        "agent": "Lauren",
+        "resID": "114960"
+    },
+    {
+        "date": "2020-10-25T03:04:50.428Z",
+        "agent": "Matt",
+        "resID": "76592"
+    },
+    {
+        "date": "2020-10-14T10:19:16.243Z",
+        "agent": "Matt",
+        "resID": "80886"
+    },
+    {
+        "date": "2020-10-25T08:55:16.979Z",
+        "agent": "Matt",
+        "resID": "67920"
+    },
+    {
+        "date": "2020-10-12T16:51:30.008Z",
+        "agent": "Matt",
+        "resID": "8309"
+    },
+    {
+        "date": "2020-10-22T14:09:24.794Z",
+        "agent": "Kelly",
+        "resID": "23368"
+    },
+    {
+        "date": "2020-10-19T06:05:54.116Z",
+        "agent": "Matt",
+        "resID": "107212"
+    },
+    {
+        "date": "2020-10-17T17:04:59.542Z",
+        "agent": "Kelly",
+        "resID": "73866"
+    },
+    {
+        "date": "2020-10-13T23:12:12.845Z",
+        "agent": "Matt",
+        "resID": "99804"
+    },
+    {
+        "date": "2020-10-16T16:52:19.797Z",
+        "agent": "Amber",
+        "resID": "113733"
+    },
+    {
+        "date": "2020-10-12T16:01:11.939Z",
+        "agent": "Amber",
+        "resID": "81907"
+    },
+    {
+        "date": "2020-10-15T10:29:05.146Z",
+        "agent": "Kelly",
+        "resID": "115892"
+    },
+    {
+        "date": "2020-10-16T05:14:07.967Z",
+        "agent": "Kelly",
+        "resID": "100589"
+    },
+    {
+        "date": "2020-10-19T02:09:36.467Z",
+        "agent": "Matt",
+        "resID": "71416"
+    },
+    {
+        "date": "2020-10-13T23:26:16.664Z",
+        "agent": "Ryon",
+        "resID": "4214"
+    },
+    {
+        "date": "2020-10-13T01:44:42.088Z",
+        "agent": "Ryon",
+        "resID": "43580"
+    },
+    {
+        "date": "2020-10-17T00:38:57.659Z",
+        "agent": "Ryon",
+        "resID": "145285"
+    },
+    {
+        "date": "2020-10-25T06:48:46.872Z",
+        "agent": "Kelly",
+        "resID": "17453"
+    },
+    {
+        "date": "2020-10-16T16:40:47.110Z",
+        "agent": "Kelly",
+        "resID": "95834"
+    },
+    {
+        "date": "2020-10-22T09:16:45.479Z",
+        "agent": "Ryon",
+        "resID": "87754"
+    },
+    {
+        "date": "2020-10-16T17:42:52.259Z",
+        "agent": "Matt",
+        "resID": "62952"
+    },
+    {
+        "date": "2020-10-15T06:36:52.889Z",
+        "agent": "Amber",
+        "resID": "55776"
+    },
+    {
+        "date": "2020-10-23T07:47:27.541Z",
+        "agent": "Amber",
+        "resID": "24063"
+    },
+    {
+        "date": "2020-10-24T14:25:00.016Z",
+        "agent": "Lauren",
+        "resID": "61486"
+    },
+    {
+        "date": "2020-10-19T07:23:23.342Z",
+        "agent": "Lauren",
+        "resID": "32667"
+    },
+    {
+        "date": "2020-10-18T03:19:08.593Z",
+        "agent": "Ryon",
+        "resID": "28539"
+    },
+    {
+        "date": "2020-10-14T08:03:08.020Z",
+        "agent": "Ryon",
+        "resID": "2447"
+    },
+    {
+        "date": "2020-10-21T09:20:05.655Z",
+        "agent": "Amber",
+        "resID": "2168"
+    },
+    {
+        "date": "2020-10-15T23:33:29.117Z",
+        "agent": "Amber",
+        "resID": "59262"
+    },
+    {
+        "date": "2020-10-12T09:25:04.847Z",
+        "agent": "Kelly",
+        "resID": "79092"
+    },
+    {
+        "date": "2020-10-17T18:09:03.180Z",
+        "agent": "Amber",
+        "resID": "147471"
+    },
+    {
+        "date": "2020-10-25T16:42:23.289Z",
+        "agent": "Matt",
+        "resID": "83854"
+    },
+    {
+        "date": "2020-10-17T13:01:14.644Z",
+        "agent": "Amber",
+        "resID": "105078"
+    },
+    {
+        "date": "2020-10-25T22:52:52.318Z",
+        "agent": "Ryon",
+        "resID": "47544"
+    },
+    {
+        "date": "2020-10-21T01:30:05.010Z",
+        "agent": "Amber",
+        "resID": "1834"
+    },
+    {
+        "date": "2020-10-24T23:29:41.238Z",
+        "agent": "Kelly",
+        "resID": "59268"
+    },
+    {
+        "date": "2020-10-14T17:18:08.588Z",
+        "agent": "Lauren",
+        "resID": "137242"
+    },
+    {
+        "date": "2020-10-18T21:17:40.668Z",
+        "agent": "Ryon",
+        "resID": "85415"
+    },
+    {
+        "date": "2020-10-21T17:39:31.145Z",
+        "agent": "Kelly",
+        "resID": "89903"
+    },
+    {
+        "date": "2020-10-17T04:09:46.475Z",
+        "agent": "Lauren",
+        "resID": "127498"
+    },
+    {
+        "date": "2020-10-20T06:22:49.954Z",
+        "agent": "Ryon",
+        "resID": "43489"
+    },
+    {
+        "date": "2020-10-24T02:41:32.429Z",
+        "agent": "Lauren",
+        "resID": "101002"
+    },
+    {
+        "date": "2020-10-23T06:37:37.909Z",
+        "agent": "Kelly",
+        "resID": "28535"
+    },
+    {
+        "date": "2020-10-20T19:40:25.205Z",
+        "agent": "Ryon",
+        "resID": "84690"
+    },
+    {
+        "date": "2020-10-16T14:48:58.722Z",
+        "agent": "Ryon",
+        "resID": "17508"
+    },
+    {
+        "date": "2020-10-17T06:13:49.266Z",
+        "agent": "Ryon",
+        "resID": "109714"
+    },
+    {
+        "date": "2020-10-20T18:05:34.588Z",
+        "agent": "Matt",
+        "resID": "47061"
+    },
+    {
+        "date": "2020-10-14T08:42:11.988Z",
+        "agent": "Amber",
+        "resID": "19520"
+    },
+    {
+        "date": "2020-10-25T02:13:21.516Z",
+        "agent": "Ryon",
+        "resID": "80558"
+    },
+    {
+        "date": "2020-10-14T06:54:22.079Z",
+        "agent": "Amber",
+        "resID": "139229"
+    },
+    {
+        "date": "2020-10-14T02:14:44.936Z",
+        "agent": "Ryon",
+        "resID": "141155"
+    },
+    {
+        "date": "2020-10-16T13:20:28.166Z",
+        "agent": "Lauren",
+        "resID": "60307"
+    },
+    {
+        "date": "2020-10-17T18:11:27.061Z",
+        "agent": "Lauren",
+        "resID": "132880"
+    },
+    {
+        "date": "2020-10-23T05:04:30.952Z",
+        "agent": "Matt",
+        "resID": "131259"
+    },
+    {
+        "date": "2020-10-16T22:23:32.504Z",
+        "agent": "Kelly",
+        "resID": "94149"
+    },
+    {
+        "date": "2020-10-21T20:47:05.089Z",
+        "agent": "Matt",
+        "resID": "75673"
+    },
+    {
+        "date": "2020-10-20T08:14:48.034Z",
+        "agent": "Lauren",
+        "resID": "138440"
+    },
+    {
+        "date": "2020-10-16T09:08:54.474Z",
+        "agent": "Matt",
+        "resID": "112858"
+    },
+    {
+        "date": "2020-10-18T17:29:00.261Z",
+        "agent": "Kelly",
+        "resID": "104774"
+    },
+    {
+        "date": "2020-10-21T05:22:38.120Z",
+        "agent": "Kelly",
+        "resID": "83408"
+    },
+    {
+        "date": "2020-10-21T20:40:29.015Z",
+        "agent": "Matt",
+        "resID": "148246"
+    },
+    {
+        "date": "2020-10-18T07:09:44.080Z",
+        "agent": "Lauren",
+        "resID": "62295"
+    },
+    {
+        "date": "2020-10-19T05:34:19.745Z",
+        "agent": "Lauren",
+        "resID": "138825"
+    },
+    {
+        "date": "2020-10-17T05:45:39.962Z",
+        "agent": "Matt",
+        "resID": "21148"
+    },
+    {
+        "date": "2020-10-12T21:26:37.492Z",
+        "agent": "Ryon",
+        "resID": "98486"
+    },
+    {
+        "date": "2020-10-20T04:24:39.039Z",
+        "agent": "Matt",
+        "resID": "19256"
+    },
+    {
+        "date": "2020-10-16T12:40:07.560Z",
+        "agent": "Kelly",
+        "resID": "60498"
+    },
+    {
+        "date": "2020-10-25T20:10:54.617Z",
+        "agent": "Matt",
+        "resID": "20123"
+    },
+    {
+        "date": "2020-10-10T07:16:05.909Z",
+        "agent": "Robert",
+        "resID": "116204"
+    },
+    {
+        "date": "2020-10-01T17:18:58.720Z",
+        "agent": "Robert",
+        "resID": "121066"
+    },
+    {
+        "date": "2020-10-15T02:32:45.948Z",
+        "agent": "Justin",
+        "resID": "89728"
+    },
+    {
+        "date": "2020-10-15T18:41:58.318Z",
+        "agent": "Amber",
+        "resID": "118445"
+    },
+    {
+        "date": "2020-10-09T23:47:26.227Z",
+        "agent": "Matt",
+        "resID": "68371"
+    },
+    {
+        "date": "2020-10-10T03:16:20.662Z",
+        "agent": "Matt",
+        "resID": "29449"
+    },
+    {
+        "date": "2020-10-13T18:40:30.460Z",
+        "agent": "Kelly",
+        "resID": "46807"
+    },
+    {
+        "date": "2020-10-06T00:21:41.708Z",
+        "agent": "Kelly",
+        "resID": "36447"
+    },
+    {
+        "date": "2020-10-12T19:04:22.694Z",
+        "agent": "Kelly",
+        "resID": "119513"
+    },
+    {
+        "date": "2020-10-03T20:29:37.066Z",
+        "agent": "Justin",
+        "resID": "12536"
+    },
+    {
+        "date": "2020-10-09T11:09:04.301Z",
+        "agent": "Matt",
+        "resID": "101453"
+    },
+    {
+        "date": "2020-10-25T04:55:25.596Z",
+        "agent": "Ryon",
+        "resID": "69378"
+    },
+    {
+        "date": "2020-10-25T17:54:36.636Z",
+        "agent": "Amber",
+        "resID": "51764"
+    },
+    {
+        "date": "2020-10-05T06:22:31.373Z",
+        "agent": "Lauren",
+        "resID": "18475"
+    },
+    {
+        "date": "2020-10-24T19:24:00.264Z",
+        "agent": "Kelly",
+        "resID": "46797"
+    },
+    {
+        "date": "2020-10-10T01:45:12.624Z",
+        "agent": "Kelly",
+        "resID": "104460"
+    },
+    {
+        "date": "2020-10-04T04:48:49.255Z",
+        "agent": "Amber",
+        "resID": "37572"
+    },
+    {
+        "date": "2020-10-03T10:57:26.770Z",
+        "agent": "Justin",
+        "resID": "135740"
+    },
+    {
+        "date": "2020-10-11T02:37:22.513Z",
+        "agent": "Ryon",
+        "resID": "35717"
+    },
+    {
+        "date": "2020-10-18T18:20:54.364Z",
+        "agent": "Justin",
+        "resID": "145617"
+    },
+    {
+        "date": "2020-10-03T00:46:14.641Z",
+        "agent": "Ryon",
+        "resID": "143202"
+    },
+    {
+        "date": "2020-10-10T08:45:46.984Z",
+        "agent": "Robert",
+        "resID": "107783"
+    },
+    {
+        "date": "2020-10-17T03:04:07.222Z",
+        "agent": "Justin",
+        "resID": "113396"
+    },
+    {
+        "date": "2020-10-23T22:08:58.320Z",
+        "agent": "Ryon",
+        "resID": "34228"
+    },
+    {
+        "date": "2020-10-03T11:28:37.974Z",
+        "agent": "Matt",
+        "resID": "118651"
+    },
+    {
+        "date": "2020-10-07T22:41:36.814Z",
+        "agent": "Matt",
+        "resID": "120430"
+    },
+    {
+        "date": "2020-10-18T22:03:47.493Z",
+        "agent": "Kelly",
+        "resID": "70755"
+    },
+    {
+        "date": "2020-10-23T13:12:40.393Z",
+        "agent": "Lauren",
+        "resID": "53430"
+    },
+    {
+        "date": "2020-10-18T12:46:49.869Z",
+        "agent": "Kelly",
+        "resID": "133936"
+    },
+    {
+        "date": "2020-10-11T15:59:19.509Z",
+        "agent": "Justin",
+        "resID": "92294"
+    },
+    {
+        "date": "2020-10-07T07:45:46.527Z",
+        "agent": "Amber",
+        "resID": "121908"
+    },
+    {
+        "date": "2020-10-13T21:39:45.052Z",
+        "agent": "Ryon",
+        "resID": "98002"
+    },
+    {
+        "date": "2020-10-14T11:58:46.971Z",
+        "agent": "Lauren",
+        "resID": "120802"
+    },
+    {
+        "date": "2020-10-12T23:50:47.925Z",
+        "agent": "Ryon",
+        "resID": "142272"
+    },
+    {
+        "date": "2020-10-20T18:33:37.197Z",
+        "agent": "Matt",
+        "resID": "96892"
+    },
+    {
+        "date": "2020-10-20T20:09:01.995Z",
+        "agent": "Robert",
+        "resID": "146108"
+    },
+    {
+        "date": "2020-10-18T10:58:27.952Z",
+        "agent": "Justin",
+        "resID": "143900"
+    },
+    {
+        "date": "2020-10-21T15:00:00.534Z",
+        "agent": "Robert",
+        "resID": "146826"
+    },
+    {
+        "date": "2020-10-15T09:47:23.928Z",
+        "agent": "Lauren",
+        "resID": "89895"
+    },
+    {
+        "date": "2020-10-23T15:41:30.934Z",
+        "agent": "Lauren",
+        "resID": "147626"
+    },
+    {
+        "date": "2020-10-16T04:55:35.962Z",
+        "agent": "Ryon",
+        "resID": "136411"
+    },
+    {
+        "date": "2020-10-12T13:38:10.472Z",
+        "agent": "Matt",
+        "resID": "64788"
+    },
+    {
+        "date": "2020-10-21T00:36:18.282Z",
+        "agent": "Matt",
+        "resID": "72539"
+    },
+    {
+        "date": "2020-10-07T22:26:52.223Z",
+        "agent": "Lauren",
+        "resID": "15914"
+    },
+    {
+        "date": "2020-10-25T17:51:58.504Z",
+        "agent": "Kelly",
+        "resID": "52970"
+    },
+    {
+        "date": "2020-10-11T20:10:20.600Z",
+        "agent": "Kelly",
+        "resID": "122466"
+    },
+    {
+        "date": "2020-10-10T14:01:57.438Z",
+        "agent": "Justin",
+        "resID": "76662"
+    },
+    {
+        "date": "2020-10-18T20:28:34.093Z",
+        "agent": "Kelly",
+        "resID": "12659"
+    },
+    {
+        "date": "2020-10-14T00:18:26.452Z",
+        "agent": "Robert",
+        "resID": "98346"
+    },
+    {
+        "date": "2020-10-12T12:27:06.385Z",
+        "agent": "Justin",
+        "resID": "23178"
+    },
+    {
+        "date": "2020-10-06T21:38:36.397Z",
+        "agent": "Justin",
+        "resID": "96578"
+    },
+    {
+        "date": "2020-10-04T19:50:16.027Z",
+        "agent": "Matt",
+        "resID": "145098"
+    },
+    {
+        "date": "2020-10-13T19:13:27.761Z",
+        "agent": "Amber",
+        "resID": "137727"
+    },
+    {
+        "date": "2020-10-09T04:50:48.922Z",
+        "agent": "Kelly",
+        "resID": "140676"
+    },
+    {
+        "date": "2020-10-24T03:35:34.438Z",
+        "agent": "Justin",
+        "resID": "123017"
+    },
+    {
+        "date": "2020-10-15T13:12:57.726Z",
+        "agent": "Justin",
+        "resID": "41663"
+    },
+    {
+        "date": "2020-10-03T05:35:19.663Z",
+        "agent": "Ryon",
+        "resID": "106655"
+    },
+    {
+        "date": "2020-10-05T15:18:50.549Z",
+        "agent": "Robert",
+        "resID": "14537"
+    },
+    {
+        "date": "2020-10-15T19:27:39.822Z",
+        "agent": "Robert",
+        "resID": "143264"
+    },
+    {
+        "date": "2020-10-11T14:08:52.366Z",
+        "agent": "Kelly",
+        "resID": "82391"
+    },
+    {
+        "date": "2020-10-22T11:57:43.817Z",
+        "agent": "Justin",
+        "resID": "124070"
+    },
+    {
+        "date": "2020-10-16T18:17:04.182Z",
+        "agent": "Amber",
+        "resID": "6956"
+    },
+    {
+        "date": "2020-10-20T16:32:15.025Z",
+        "agent": "Justin",
+        "resID": "69556"
+    },
+    {
+        "date": "2020-10-18T16:35:40.658Z",
+        "agent": "Matt",
+        "resID": "67872"
+    },
+    {
+        "date": "2020-10-02T02:49:24.202Z",
+        "agent": "Justin",
+        "resID": "2850"
+    },
+    {
+        "date": "2020-10-07T04:57:43.786Z",
+        "agent": "Amber",
+        "resID": "48999"
+    },
+    {
+        "date": "2020-10-11T18:28:20.315Z",
+        "agent": "Kelly",
+        "resID": "32507"
+    },
+    {
+        "date": "2020-10-06T13:11:52.444Z",
+        "agent": "Robert",
+        "resID": "107235"
+    },
+    {
+        "date": "2020-10-23T07:23:21.787Z",
+        "agent": "Ryon",
+        "resID": "55111"
+    },
+    {
+        "date": "2020-10-05T03:27:54.657Z",
+        "agent": "Robert",
+        "resID": "90421"
+    },
+    {
+        "date": "2020-10-10T10:25:43.655Z",
+        "agent": "Matt",
+        "resID": "6477"
+    },
+    {
+        "date": "2020-10-10T11:05:41.195Z",
+        "agent": "Robert",
+        "resID": "44324"
+    },
+    {
+        "date": "2020-10-25T01:22:01.166Z",
+        "agent": "Lauren",
+        "resID": "88256"
+    },
+    {
+        "date": "2020-10-12T20:09:45.802Z",
+        "agent": "Robert",
+        "resID": "125659"
+    },
+    {
+        "date": "2020-10-14T02:23:39.115Z",
+        "agent": "Kelly",
+        "resID": "130537"
+    },
+    {
+        "date": "2020-10-20T09:21:33.526Z",
+        "agent": "Matt",
+        "resID": "38976"
+    },
+    {
+        "date": "2020-10-11T02:12:17.221Z",
+        "agent": "Robert",
+        "resID": "32239"
+    },
+    {
+        "date": "2020-10-01T06:21:37.497Z",
+        "agent": "Ryon",
+        "resID": "53877"
+    },
+    {
+        "date": "2020-10-21T17:00:54.436Z",
+        "agent": "Amber",
+        "resID": "128129"
+    },
+    {
+        "date": "2020-10-19T07:18:30.749Z",
+        "agent": "Lauren",
+        "resID": "124410"
+    },
+    {
+        "date": "2020-10-09T20:37:30.161Z",
+        "agent": "Lauren",
+        "resID": "56092"
+    },
+    {
+        "date": "2020-10-13T05:43:34.908Z",
+        "agent": "Matt",
+        "resID": "29840"
+    },
+    {
+        "date": "2020-10-25T15:52:57.414Z",
+        "agent": "Kelly",
+        "resID": "16913"
+    },
+    {
+        "date": "2020-10-24T04:41:47.204Z",
+        "agent": "Justin",
+        "resID": "54257"
+    },
+    {
+        "date": "2020-10-22T10:32:24.180Z",
+        "agent": "Kelly",
+        "resID": "114180"
+    },
+    {
+        "date": "2020-10-23T08:49:50.422Z",
+        "agent": "Lauren",
+        "resID": "56624"
+    },
+    {
+        "date": "2020-10-22T07:15:26.177Z",
+        "agent": "Justin",
+        "resID": "17994"
+    },
+    {
+        "date": "2020-10-11T02:15:48.483Z",
+        "agent": "Kelly",
+        "resID": "91082"
+    },
+    {
+        "date": "2020-10-07T21:08:16.738Z",
+        "agent": "Lauren",
+        "resID": "93419"
+    },
+    {
+        "date": "2020-10-14T19:41:30.913Z",
+        "agent": "Lauren",
+        "resID": "7300"
+    },
+    {
+        "date": "2020-10-06T03:02:10.199Z",
+        "agent": "Robert",
+        "resID": "76562"
+    },
+    {
+        "date": "2020-10-08T19:40:11.810Z",
+        "agent": "Lauren",
+        "resID": "34942"
+    },
+    {
+        "date": "2020-10-13T15:04:18.098Z",
+        "agent": "Lauren",
+        "resID": "79643"
+    },
+    {
+        "date": "2020-10-11T09:05:00.913Z",
+        "agent": "Matt",
+        "resID": "506"
+    },
+    {
+        "date": "2020-10-22T18:46:51.201Z",
+        "agent": "Amber",
+        "resID": "123557"
+    },
+    {
+        "date": "2020-10-20T20:34:29.356Z",
+        "agent": "Ryon",
+        "resID": "92106"
+    }
+]

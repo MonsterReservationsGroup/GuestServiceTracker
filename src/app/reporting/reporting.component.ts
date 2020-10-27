@@ -12,15 +12,25 @@ import { ActivatedRoute } from '@angular/router';
   templateUrl: './reporting.component.html',
   styleUrls: ['./reporting.component.scss']
 })
-export class ReportingComponent implements OnInit, AfterViewInit {
+export class ReportingComponent implements OnInit {
 
-
+  //---Date Picker management stuff-------------------------------------------------------------------------------
   startingDate: Date;
   endingDate: Date;
 
-  passedDate: Date;
-  greetingMessage: string;
+  changeStart(event): void {
+    let output = new Date(event.value)
+    this.dateService.changeStartDate(output);
+  }
 
+  changeEnd(event): void {
+    let output = new Date(event.value)
+    this.dateService.changeEndDate(output);
+  }
+
+
+
+  //OnInit stuff--------------------------------------------------------------------------------------------------------
   constructor(private dateService: DateService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
@@ -29,16 +39,12 @@ export class ReportingComponent implements OnInit, AfterViewInit {
       .subscribe(params => {
 
         if (params.keys.length === 0) {
-          this.passedDate = null;
-          this.greetingMessage = 'no parameters received!';
+          console.log('no parameters received!');
         }
         else {
-          this.passedDate = new Date(
-            params.get('passedDate'));
-          this.greetingMessage = 'You passed a parameter!';
+          console.log('You passed a parameter:', params);
         }
       });
-    console.log('received passedDate', this.passedDate);
 
     this.dateService.currentStartDate
       .subscribe(startDate => this.startingDate = startDate);
@@ -47,19 +53,6 @@ export class ReportingComponent implements OnInit, AfterViewInit {
       .subscribe(endDate => this.endingDate = endDate);
   }
 
-  changeStart(event) {
-    let output = new Date(event.value)
-    this.dateService.changeStartDate(output);
-  }
-
-  changeEnd(event) {
-    let output = new Date(event.value)
-    this.dateService.changeEndDate(output);
-  }
-
-  ngAfterViewInit() {
-
-  }
 
 
 }

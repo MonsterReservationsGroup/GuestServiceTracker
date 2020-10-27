@@ -1,5 +1,5 @@
 import { BehaviorSubject } from 'rxjs';
-import { surveyData } from '../data';
+import { sentSurveys, surveyData } from '../data';
 import { Injectable } from '@angular/core';
 
 @Injectable({
@@ -91,7 +91,7 @@ export class DateService {
     return new Date().setDate(new Date().getDate() + modifier);
   }
 
-  //managing the dateRangeData variable below----------------------------------------------------------------------
+  //managing the dateRangeData variable below----------------------------------------------------------------------------------
 
   importedData = surveyData;
 
@@ -109,6 +109,18 @@ export class DateService {
       .sort((a, b) => (a.date > b.date) ? 1 : ((b.date > a.date) ? -1 : 0));
   }
 
+  // Managing the sentSurveys variable below-------------------------------------------------------------
+  importedSentSurveys: Array<any> = sentSurveys;
+  sentSurveySource = new BehaviorSubject(this.importedSentSurveys
+    .filter(entry => new Date(entry.date) >= new Date(this.startingDateSource.getValue()))
+    .filter(entry => new Date(entry.date) <= new Date(this.endingDateSource.getValue())));
 
-  constructor() { }
+  currentSentSurveys = this.sentSurveySource.asObservable();
+
+  updateSentSurveys() {
+    return this.importedSentSurveys
+      .filter(entry => new Date(entry.date) >= new Date(this.startingDateSource.getValue()))
+      .filter(entry => new Date(entry.date) <= new Date(this.endingDateSource.getValue()));
+
+  }
 }
