@@ -1,8 +1,10 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { AppComponent } from './app.component';
 import { DisplayComponent } from './display/display.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { ReportingComponent } from './reporting/reporting.component';
+import { TestingComponent } from './testing/testing.component';
 
 const routes: Routes = [
 	{
@@ -14,8 +16,16 @@ const routes: Routes = [
 		component: ReportingComponent,
 	},
 	{
-		path: 'display',
+		path: 'sent',
 		component: DisplayComponent,
+	},
+	{
+		path: 'testing',
+		component: TestingComponent,
+	},
+	{
+		path: 'home',
+		component: AppComponent,
 	},
 ];
 
@@ -23,4 +33,4 @@ const routes: Routes = [
 	imports: [RouterModule.forRoot(routes)],
 	exports: [RouterModule],
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }

@@ -1,45 +1,47 @@
 <app-navbar></app-navbar>
 <div class="center">
-    <div>
+    <div class="container">
         <div>
             <label>Select Date Range</label>
         </div>
-        <span>
-            <mat-form-field appearance="fill">
-                <mat-label>Choose a start date</mat-label>
-                <input matInput
-                    [matDatepicker]="picker1"
-                    name="startingDate"
-                    [(ngModel)]="startingDate"
-                    (dateInput)="changeStart($event)"
-                    (onChange)="changeStart($event)">
-                <mat-datepicker-toggle matSuffix
-                    [for]="picker1"></mat-datepicker-toggle>
-                <mat-datepicker #picker1></mat-datepicker>
-            </mat-form-field>
-        </span>
-        <span>
-            <mat-form-field appearance="fill">
-                <mat-label>Choose an end date</mat-label>
-                <input matInput
-                    [matDatepicker]="picker2"
-                    name="endingDate"
-                    [(ngModel)]="endingDate"
-                    (dateInput)="changeEnd($event)"
-                    (onChange)="changeEnd($event)">
-                <mat-datepicker-toggle matSuffix
-                    [for]="picker2"></mat-datepicker-toggle>
-                <mat-datepicker #picker2></mat-datepicker>
-            </mat-form-field>
-        </span>
+        <div>
+            <span class="datepicker">
+                <mat-form-field appearance="fill">
+                    <mat-label>Choose a start date</mat-label>
+                    <input matInput
+                        [matDatepicker]="picker1"
+                        name="startingDate"
+                        [(ngModel)]="startingDate"
+                        (dateInput)="changeStart($event)"
+                        (onChange)="changeStart($event)">
+                    <mat-datepicker-toggle matSuffix
+                        [for]="picker1"></mat-datepicker-toggle>
+                    <mat-datepicker #picker1></mat-datepicker>
+                </mat-form-field>
+            </span>
+            <span class="datepicker">
+                <mat-form-field appearance="fill">
+                    <mat-label>Choose an end date</mat-label>
+                    <input matInput
+                        [matDatepicker]="picker2"
+                        name="endingDate"
+                        [(ngModel)]="endingDate"
+                        (dateInput)="changeEnd($event)"
+                        (onChange)="changeEnd($event)">
+                    <mat-datepicker-toggle matSuffix
+                        [for]="picker2"></mat-datepicker-toggle>
+                    <mat-datepicker #picker2></mat-datepicker>
+                </mat-form-field>
+            </span>
+        </div>
     </div>
     <br>
-    <div>
+    <div class="container">
         <summary-table></summary-table>
     </div>
 
     <br>
-    <div>
+    <div class="container">
         <raw-data-table></raw-data-table>
     </div>
 </div>

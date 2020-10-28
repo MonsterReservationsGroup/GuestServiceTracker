@@ -1,10 +1,16 @@
-table {
-    width: 100%;
-    align-content: center;
-  }
+
 
 .center {
   margin: auto;
-  width: 60%;
-  padding: 10px;
+  align-content: center;
+  float: center;
+}
+
+.container {
+  margin: auto;
+  width: 50%;
+}
+
+.datepicker {
+  margin: 15px;
 }

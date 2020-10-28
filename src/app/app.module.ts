@@ -16,7 +16,6 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { DisplayComponent } from './display/display.component';
 import { ReportingComponent } from './reporting/reporting.component';
 import { RouterModule } from '@angular/router';
-import { FormsModule } from '@angular/forms';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatTableModule } from '@angular/material/table';
@@ -26,6 +25,8 @@ import { DateService } from './services/dates.service';
 import { RawDataTableComponent } from './raw-data-table/raw-data-table.component';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { TestingComponent } from './testing/testing.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
 	declarations: [
@@ -33,9 +34,9 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
 		NavbarComponent,
 		DisplayComponent,
 		ReportingComponent,
-
 		SummaryTableComponent,
 		RawDataTableComponent,
+		TestingComponent,
 	],
 	imports: [
 		BrowserModule,
@@ -70,4 +71,4 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
 
 	bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }

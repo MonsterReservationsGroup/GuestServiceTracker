@@ -1817,7 +1817,7 @@ export const surveyData: Array<SourceData> = [
 		'resID': 2,
 	},
 ];
-export const sentSurveys: Array<SurveySent> = [
+export const sentSurveysExport: Array<SurveySent> = [
 	{
 		'date': '2020-10-19T01:11:11.396Z',
 		'agent': 'Ryon',

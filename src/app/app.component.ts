@@ -2,7 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { ActivatedRoute } from '@angular/router';
 import { SourceData, Data } from './data';
+
 import * as _ from 'lodash';
+import { randomDate } from './testing/testing.component';
 
 @Component({
 	selector: 'app-root',
@@ -10,7 +12,7 @@ import * as _ from 'lodash';
 	styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit {
-	constructor(private af: AngularFirestore, private route: ActivatedRoute) {}
+	constructor(private af: AngularFirestore, private route: ActivatedRoute) { }
 
 	title = 'testProject';
 
@@ -31,6 +33,7 @@ export class AppComponent implements OnInit {
 	}
 
 	ngOnInit() {
+		console.log('app component onInit reached');
 		this.redirect();
 	}
 }

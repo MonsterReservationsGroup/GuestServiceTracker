@@ -1,187 +1,199 @@
 import { BehaviorSubject } from 'rxjs';
-import { sentSurveys } from '../data';
+import { sentSurveysExport, SourceData, SurveySent } from '../data';
 import { ApplicationRef, Injectable, OnInit } from '@angular/core';
 import { take } from 'rxjs/operators';
 import * as _ from 'lodash';
 import { AngularFirestore } from '@angular/fire/firestore';
-let surveyData: Array<any> = [];
-let dat = [];
+import * as firebase from 'firebase';
+
 
 @Injectable({
-	providedIn: 'root',
+  providedIn: 'root',
 })
 export class DateService implements OnInit {
-	constructor(private af: AngularFirestore, private app: ApplicationRef) {
-		this.af
-			.collection('surveyData')
-			.valueChanges()
-			.pipe(take(1))
-			.subscribe(val => {
-				dat = val;
-			});
-	}
 
-	//Managing the date selection elements below----------------------------------------------------------------
+  surveyData: Array<SourceData> = [];
+  sentSurveys: Array<SurveySent> = [];
 
-	startingDateSource = new BehaviorSubject(
-		new Date(this.defaultStartingDate())
-	);
-	currentStartDate = this.startingDateSource.asObservable();
 
-	endingDateSource = new BehaviorSubject(new Date(this.defaultEndingDate()));
-	currentEndDate = this.endingDateSource.asObservable();
+  refreshData() {
+    console.log('refreshData reached');
+    return new Promise(r => {
+      this.af
+        .collection('surveyData')
+        .valueChanges()
+        .pipe(take(1))
+        .subscribe(val => {
+          this.surveyData = val as Array<SourceData>;
 
-	changeStartDate(input) {
-		this.startingDateSource.next(input);
+          let newDateRange = this.updateDateRange();
+          this.dateRangeDataSource.next(newDateRange);
+        });
 
-		let newDateRange = this.updateDateRange();
-		this.dateRangeDataSource.next(newDateRange);
-	}
+      this.af
+        .collection('sentSurvey')
+        .valueChanges()
+        .pipe(take(1))
+        .subscribe(val => {
+          this.sentSurveys = val as Array<SurveySent>;
 
-	changeEndDate(input) {
-		this.endingDateSource.next(input);
+          let newSurveys = this.updateSentSurveys();
+          this.sentSurveySource.next(newSurveys);
+        });
+    })
+  }
 
-		let newDateRange = this.updateDateRange();
-		this.dateRangeDataSource.next(newDateRange);
-	}
+  constructor(private af: AngularFirestore, private app: ApplicationRef) { }
 
-	todaysDate() {
-		return new Date().setDate(new Date().getDate() - 1);
-	}
 
-	defaultStartingDate() {
-		let today = new Date().getDay();
-		let modifier;
-		switch (today) {
-			case 0:
-				modifier = -6;
-				break;
-			case 1:
-				modifier = 0;
-				break;
-			case 2:
-				modifier = -1;
-				break;
-			case 3:
-				modifier = -2;
-				break;
-			case 4:
-				modifier = -3;
-				break;
-			case 5:
-				modifier = -4;
-				break;
-			case 6:
-				modifier = -5;
-				break;
-		}
-		return new Date().setDate(new Date().getDate() + modifier);
-	}
+  //Managing the date selection elements below----------------------------------------------------------------
 
-	defaultEndingDate() {
-		let today = new Date().getDay();
-		let modifier;
-		switch (today) {
-			case 0:
-				modifier = 0;
-				break;
-			case 1:
-				modifier = 6;
-				break;
-			case 2:
-				modifier = 5;
-				break;
-			case 3:
-				modifier = 4;
-				break;
-			case 4:
-				modifier = 3;
-				break;
-			case 5:
-				modifier = 2;
-				break;
-			case 6:
-				modifier = 1;
-				break;
-		}
-		return new Date().setDate(new Date().getDate() + modifier);
-	}
+  startingDateSource = new BehaviorSubject(
+    new Date(this.defaultStartingDate())
+  );
+  currentStartDate = this.startingDateSource.asObservable();
 
-	//managing the dateRangeData variable below----------------------------------------------------------------------------------
+  endingDateSource = new BehaviorSubject(new Date(this.defaultEndingDate()));
+  currentEndDate = this.endingDateSource.asObservable();
 
-	dateRangeDataSource = new BehaviorSubject(
-		surveyData
-			.filter(entry => {
-				const date = new Date('***');
-				console.log(date);
-				return (
-					new Date(entry.date) >= new Date(this.startingDateSource.getValue())
-				);
-			})
-			.filter(
-				entry =>
-					new Date(entry.date) <= new Date(this.endingDateSource.getValue())
-			)
-			.sort((a, b) => (a.date > b.date ? 1 : b.date > a.date ? -1 : 0))
-	);
+  changeStartDate(input) {
+    console.log('changeStartDate reached');
+    this.startingDateSource.next(input);
 
-	update(surveyData) {
-		return surveyData
-			.filter(entry => {
-				const date = new Date('***');
-				console.log(date);
-				return (
-					new Date(entry.date) >= new Date(this.startingDateSource.getValue())
-				);
-			})
-			.filter(
-				entry =>
-					new Date(entry.date) <= new Date(this.endingDateSource.getValue())
-			)
-			.sort((a, b) => (a.date > b.date ? 1 : b.date > a.date ? -1 : 0));
-	}
+    let newDateRange = this.updateDateRange();
+    this.dateRangeDataSource.next(newDateRange);
 
-	currentDateRangeData = this.dateRangeDataSource.asObservable();
+    let newSurveys = this.updateSentSurveys();
+    this.sentSurveySource.next(newSurveys);
+  }
 
-	updateDateRange() {
-		return surveyData
-			.filter(
-				entry =>
-					new Date(entry.date) >= new Date(this.startingDateSource.getValue())
-			)
-			.filter(
-				entry =>
-					new Date(entry.date) <= new Date(this.endingDateSource.getValue())
-			)
-			.sort((a, b) => (a.date > b.date ? 1 : b.date > a.date ? -1 : 0));
-	}
+  changeEndDate(input) {
+    console.log('changeEndDate reached');
+    this.endingDateSource.next(input);
 
-	// Managing the sentSurveys variable below-------------------------------------------------------------
-	importedSentSurveys: Array<any> = sentSurveys;
-	sentSurveySource = new BehaviorSubject(
-		this.importedSentSurveys
-			.filter(
-				entry =>
-					new Date(entry.date) >= new Date(this.startingDateSource.getValue())
-			)
-			.filter(
-				entry =>
-					new Date(entry.date) <= new Date(this.endingDateSource.getValue())
-			)
-	);
+    let newDateRange = this.updateDateRange();
+    this.dateRangeDataSource.next(newDateRange);
 
-	currentSentSurveys = this.sentSurveySource.asObservable();
+    let newSurveys = this.updateSentSurveys();
+    this.sentSurveySource.next(newSurveys);
+  }
 
-	updateSentSurveys() {
-		return this.importedSentSurveys
-			.filter(
-				entry =>
-					new Date(entry.date) >= new Date(this.startingDateSource.getValue())
-			)
-			.filter(
-				entry =>
-					new Date(entry.date) <= new Date(this.endingDateSource.getValue())
-			);
-	}
-	ngOnInit() {}
+  defaultStartingDate() {
+    console.log('defaultStartingDate reached');
+    let today = new Date().getDay();
+    let modifier;
+    switch (today) {
+      case 0:
+        modifier = -6;
+        break;
+      case 1:
+        modifier = 0;
+        break;
+      case 2:
+        modifier = -1;
+        break;
+      case 3:
+        modifier = -2;
+        break;
+      case 4:
+        modifier = -3;
+        break;
+      case 5:
+        modifier = -4;
+        break;
+      case 6:
+        modifier = -5;
+        break;
+    }
+    return new Date().setDate(new Date().getDate() + modifier);
+  }
+
+  defaultEndingDate() {
+    console.log('defaultEndingDate reached');
+    let today = new Date().getDay();
+    let modifier;
+    switch (today) {
+      case 0:
+        modifier = 0;
+        break;
+      case 1:
+        modifier = 6;
+        break;
+      case 2:
+        modifier = 5;
+        break;
+      case 3:
+        modifier = 4;
+        break;
+      case 4:
+        modifier = 3;
+        break;
+      case 5:
+        modifier = 2;
+        break;
+      case 6:
+        modifier = 1;
+        break;
+    }
+    return new Date().setDate(new Date().getDate() + modifier);
+  }
+
+  //managing the dateRangeData variable below----------------------------------------------------------------------------------
+
+  dateRangeDataSource = new BehaviorSubject([]);
+
+  currentDateRangeData = this.dateRangeDataSource.asObservable();
+
+
+  updateDateRange() {
+    console.log('updateDateRange reached');
+
+    return this.surveyData
+      .filter(
+        entry => {
+          let compareStartDate = new Date(this.dateFromFirebase(entry.date));
+          let startingDate = new Date(this.startingDateSource.getValue());
+          return compareStartDate >= startingDate;
+        })
+      .filter(
+        entry => {
+          let compareEndDate = new Date(this.dateFromFirebase(entry.date));
+          let endingDate = new Date(this.endingDateSource.getValue());
+          return compareEndDate <= endingDate;
+        })
+      .sort((a, b) => (a.date > b.date ? 1 : b.date > a.date ? -1 : 0));
+
+  }
+
+
+  dateFromFirebase(input) {
+    console.log('dateFromFireBase reached');
+    return firebase.firestore.Timestamp.fromMillis(input as unknown as number).toDate();
+  }
+
+  // Managing the sentSurveys variable below-------------------------------------------------------------
+
+  sentSurveySource = new BehaviorSubject([]);
+
+  currentSentSurveys = this.sentSurveySource.asObservable();
+
+  updateSentSurveys() {
+    console.log('updateSentSurveys reached');
+    return this.sentSurveys
+      .filter(
+        entry =>
+          new Date(entry.date) >= new Date(this.startingDateSource.getValue())
+      )
+      .filter(
+        entry =>
+          new Date(entry.date) <= new Date(this.endingDateSource.getValue())
+      );
+
+  }
+  ngOnInit() {
+
+  }
+
+
+
 }

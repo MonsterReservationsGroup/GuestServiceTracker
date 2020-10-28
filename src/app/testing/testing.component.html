@@ -1,0 +1,32 @@
+<p>testing works!</p>
+
+<div>
+    <form action="submitForm()">
+        <div>
+            <label for="repName">Rep Name:</label>
+            <input name="repName"
+                [(ngModel)]="repName">
+        </div>
+        <label for="resID">Res ID:</label>
+        <input name="resID"
+            [(ngModel)]="resID">
+        <button type="submit"
+            (click)="submitForm()">Send Survey</button>
+    </form>
+</div>
+<br>
+<div>
+    <form>
+        <label for="repName2">Response Agent:</label>
+        <input name="repName2"
+            [(ngModel)]="repName2">
+        <label for="resID2">Response resID: </label>
+        <input name="resID2"
+            [(ngModel)]="resID2">
+        <label for="source">Source:</label>
+        <input name="source"
+            [(ngModel)]="source">
+        <button type="submit"
+            (click)="submitForm2()">Respond to Survey</button>
+    </form>
+</div>

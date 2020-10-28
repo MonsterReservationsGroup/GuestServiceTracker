@@ -1,6 +1,8 @@
+import { SurveySent } from '../data';
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { AngularFirestore } from '@angular/fire/firestore';
 // import { $dataTransfer } from '../data-entry/data-entry.component'
 
 @Component({
@@ -10,32 +12,26 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class DisplayComponent implements OnInit {
 
-  constructor(private route: ActivatedRoute, private router: Router) { }
-
-
+  constructor(private route: ActivatedRoute, private router: Router, private af: AngularFirestore) { }
 
 
   ngOnInit(): void {
-    // // $dataTransfer.subscribe(val => console.log(val))
-    // console.log('onInit reached');
-    // this.route.paramMap
-    //   .subscribe(params => {
 
-    //     if (params.keys.length === 0) {
-    //       this.guestName = 'Test Guest';
-    //       this.agent = 'Test Agent';
-    //     }
-    //     else {
-    //       this.guestName = params.get('guestName');
-    //       this.agent = params.get('agent') as string;
-    //     }
+    this.route.queryParams.subscribe(async params => {
+      let docDate = new Date().toString();
+      let entry = {
+        date: docDate,
+        agent: params.agent,
+        resID: params.resID
+      }
 
-    //     this.summary = `${this.guestName}, Thank you for speaking with ${this.agent} today! 
-    //     Please leave us a survey telling others about your experience.  Thanks! `;
-    //   })
-    let passedDate = new Date();
-    console.log('sending passedDate', passedDate);
-    this.router.navigate([`/reporting/${passedDate}`]);
+      await this.af
+        .collection('sentSurvey')
+        .doc(docDate)
+        .set(entry, { merge: true });
+    })
+
   }
 
 }
+

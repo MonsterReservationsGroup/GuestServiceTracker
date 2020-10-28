@@ -14,6 +14,8 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class ReportingComponent implements OnInit {
 
+  reportingTestVariable;
+
   //---Date Picker management stuff-------------------------------------------------------------------------------
   startingDate: Date;
   endingDate: Date;
@@ -33,8 +35,10 @@ export class ReportingComponent implements OnInit {
   //OnInit stuff--------------------------------------------------------------------------------------------------------
   constructor(private dateService: DateService, private route: ActivatedRoute) { }
 
+
+
   ngOnInit(): void {
-    console.log('onInit reached');
+    console.log('reporting onInit reached');
     this.route.paramMap
       .subscribe(params => {
 
@@ -51,6 +55,8 @@ export class ReportingComponent implements OnInit {
 
     this.dateService.currentEndDate
       .subscribe(endDate => this.endingDate = endDate);
+
+    console.log('resporting onInit completed');
   }
 
 
